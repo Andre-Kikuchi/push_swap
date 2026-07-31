@@ -44,7 +44,7 @@ int	parse_flags(t_ps *ps, int argc, char **argv) // argc: total de argumentos; a
 	while (i < argc && argv[i][0] == '-' && argv[i][1] == '-')
 	// continua enquanto: ainda há argumentos E o atual começa com "--"
 	{
-		if (!apply_flag(ps, argv[i]))       // tenta aplicar a flag; se apply_flag falhou...
+		if (apply_flag(ps, argv[i]) == 0)       // tenta aplicar a flag; se apply_flag falhou...
 			error_exit(ps);                   // ...aborta com erro (flag desconhecida)
 		i++;                                  // avança pro próximo argumento
 	}
