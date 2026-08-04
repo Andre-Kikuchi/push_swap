@@ -3,24 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   sort_complex.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alesferr <alesferr@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: ahideo-k <ahideo-k@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/20 18:44:49 by alesferr          #+#    #+#             */
-/*   Updated: 2026/07/26 12:00:26 by alesferr         ###   ########.fr       */
+/*   Updated: 2026/08/04 13:24:00 by ahideo-k         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	bits_needed(int n)
-{
-	int	bits;
-
-	bits = 0;
-	while ((n - 1) >> bits)
-		bits++;
-	return (bits);
-}
+static int	bits_needed(int n);
 
 void	sort_complex(t_ps *ps)
 {
@@ -31,7 +23,7 @@ void	sort_complex(t_ps *ps)
 	bit = 0;
 	while (bit < bits_needed(ps->a.size))
 	{
-		if (is_sorted(&ps->a))
+		if (is_sorted(&ps->a) == 1)
 			break ;
 		n = ps->a.size;
 		i = 0;
@@ -46,4 +38,14 @@ void	sort_complex(t_ps *ps)
 			do_op(ps, PA);
 		bit++;
 	}
+}
+
+static int	bits_needed(int n)
+{
+	int	bits;
+
+	bits = 0;
+	while ((n - 1) >> bits)
+		bits++;
+	return (bits);
 }

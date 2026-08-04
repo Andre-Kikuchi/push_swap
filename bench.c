@@ -3,61 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   bench.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alesferr <alesferr@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: ahideo-k <ahideo-k@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/20 18:44:49 by alesferr          #+#    #+#             */
-/*   Updated: 2026/07/26 11:59:29 by alesferr         ###   ########.fr       */
+/*   Updated: 2026/08/04 13:04:23 by ahideo-k         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	put_pct(t_ps *ps)
-{
-	ft_putstr_fd("[bench] disorder:  ", 2);
-	ft_putnbr_fd(ps->disorder / 100, 2);
-	ft_putstr_fd(".", 2);
-	ft_putnbr_fd((ps->disorder % 100) / 10, 2);
-	ft_putnbr_fd(ps->disorder % 10, 2);
-	ft_putstr_fd("%\n", 2);
-}
-
-static const char	*class_name(t_strat used)
-{
-	if (used == SIMPLE)
-		return ("O(n^2)");
-	if (used == MEDIUM)
-		return ("O(n*sqrt(n))");
-	return ("O(n log n)");
-}
-
-static const char	*strat_name(t_ps *ps)
-{
-	if (ps->strat == ADAPTIVE)
-		return ("Adaptive");
-	if (ps->used == SIMPLE)
-		return ("Simple");
-	if (ps->used == MEDIUM)
-		return ("Medium");
-	return ("Complex");
-}
-
-static void	put_ops_line(t_ps *ps, int from, int to)
-{
-	int	i;
-
-	ft_putstr_fd("[bench]", 2);
-	i = from;
-	while (i < to)
-	{
-		ft_putstr_fd(" ", 2);
-		write(2, op_name(i), ft_strlen(op_name(i)) - 1);
-		ft_putstr_fd(": ", 2);
-		ft_putnbr_fd(ps->count[i], 2);
-		i++;
-	}
-	ft_putstr_fd("\n", 2);
-}
+static void			put_pct(t_ps *ps);
+static const char	*strat_name(t_ps *ps);
+static const char	*class_name(t_strat used);
+static void			put_ops_line(t_ps *ps, int from, int to);
 
 void	print_bench(t_ps *ps)
 {
@@ -78,4 +36,51 @@ void	print_bench(t_ps *ps)
 	ft_putstr_fd("\n", 2);
 	put_ops_line(ps, 0, 5);
 	put_ops_line(ps, 5, 11);
+}
+
+static void	put_pct(t_ps *ps)
+{
+	ft_putstr_fd("[bench] disorder:  ", 2);
+	ft_putnbr_fd(ps->disorder / 100, 2);
+	ft_putstr_fd(".", 2);
+	ft_putnbr_fd((ps->disorder % 100) / 10, 2);
+	ft_putnbr_fd(ps->disorder % 10, 2);
+	ft_putstr_fd("%\n", 2);
+}
+
+static const char	*strat_name(t_ps *ps)
+{
+	if (ps->strat == ADAPTIVE)
+		return ("Adaptive");
+	if (ps->used == SIMPLE)
+		return ("Simple");
+	if (ps->used == MEDIUM)
+		return ("Medium");
+	return ("Complex");
+}
+
+static const char	*class_name(t_strat used)
+{
+	if (used == SIMPLE)
+		return ("O(n^2)");
+	if (used == MEDIUM)
+		return ("O(n*sqrt(n))");
+	return ("O(n log n)");
+}
+
+static void	put_ops_line(t_ps *ps, int from, int to)
+{
+	int	i;
+
+	ft_putstr_fd("[bench]", 2);
+	i = from;
+	while (i < to)
+	{
+		ft_putstr_fd(" ", 2);
+		write(2, op_name(i), ft_strlen(op_name(i)) - 1);
+		ft_putstr_fd(": ", 2);
+		ft_putnbr_fd(ps->count[i], 2);
+		i++;
+	}
+	ft_putstr_fd("\n", 2);
 }

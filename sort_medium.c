@@ -3,29 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   sort_medium.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alesferr <alesferr@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: ahideo-k <ahideo-k@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/20 18:44:49 by alesferr          #+#    #+#             */
-/*   Updated: 2026/07/26 12:00:30 by alesferr         ###   ########.fr       */
+/*   Updated: 2026/08/04 13:23:08 by ahideo-k         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	max_pos(t_stack *b)
-{
-	int	i;
-	int	pos;
+static void	push_chunks(t_ps *ps, int chunk);
+static int	max_pos(t_stack *b);
 
-	pos = 0;
-	i = 1;
-	while (i < b->size)
+void	sort_medium(t_ps *ps)
+{
+	int	chunk;
+
+	if (is_sorted(&ps->a) == 1)
+		return ;
+	chunk = ft_isqrt(3 * ps->a.size / 2) + 2;
+	push_chunks(ps, chunk);
+	while (ps->b.size > 0)
 	{
-		if (st_get(b, i) > st_get(b, pos))
-			pos = i;
-		i++;
+		rot_to_top(ps, &ps->b, max_pos(&ps->b), 1);
+		do_op(ps, PA);
 	}
-	return (pos);
 }
 
 static void	push_chunks(t_ps *ps, int chunk)
@@ -47,17 +49,18 @@ static void	push_chunks(t_ps *ps, int chunk)
 	}
 }
 
-void	sort_medium(t_ps *ps)
+static int	max_pos(t_stack *b)
 {
-	int	chunk;
+	int	i;
+	int	pos;
 
-	if (is_sorted(&ps->a))
-		return ;
-	chunk = ft_isqrt(3 * ps->a.size / 2) + 2;
-	push_chunks(ps, chunk);
-	while (ps->b.size > 0)
+	pos = 0;
+	i = 1;
+	while (i < b->size)
 	{
-		rot_to_top(ps, &ps->b, max_pos(&ps->b), 1);
-		do_op(ps, PA);
+		if (st_get(b, i) > st_get(b, pos))
+			pos = i;
+		i++;
 	}
+	return (pos);
 }
