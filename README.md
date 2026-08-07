@@ -217,7 +217,7 @@ A pair is considered inverted when a larger value appears before a smaller value
 For a stack with \(n\) elements, the total number of possible pairs is:
 
 \[
-pairs = n(n-1) / 2
+pairs = n * (n-1) / 2
 \]
 
 The program counts the inverted pairs as `mistakes` and calculates:
@@ -663,6 +663,10 @@ ARG=($(shuf -i 1-1000 -n 500))
 - References on Big-O notation and asymptotic algorithm analysis.
 - References on Selection Sort, chunk-based sorting, and binary LSD Radix Sort.
 - 42 Norm documentation, Version 4.1.
+
+Useful websites:
+- https://push-swap-visualizer.vercel.app/
+- https://labuladong.online/en/algo/data-structure-basic/cycle-array/
 
 ### AI Usage
 
