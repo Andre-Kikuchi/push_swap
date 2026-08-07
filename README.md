@@ -219,23 +219,21 @@ A pair is considered inverted when a larger value appears before a smaller value
 For a stack with \(n\) elements, the total number of possible pairs is:
 
 \[
-\text{total pairs} = \frac{n(n-1)}{2}
+pairs = n(n-1) / 2
 \]
 
-The disorder is:
+The program counts the inverted pairs as `mistakes` and calculates:
 
 \[
-D =
-\frac{\text{number of inverted pairs}}
-{\text{total number of pairs}}
+disorder = ((mistakes * 10000) + pairs / 2) / pairs
 \]
 
 Examples:
 
 ```text
 [1, 2, 3] → 0.00% disorder
-[3, 2, 1] → 100.00% disorder
 [2, 1, 3] → 33.33% disorder
+[3, 2, 1] → 100.00% disorder
 ```
 
 The implementation stores the result as an integer between `0` and `10000`:
