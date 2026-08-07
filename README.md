@@ -16,8 +16,6 @@ The main program prints the sequence of operations required to sort the numbers.
 - a bonus `checker` program that validates a sequence of operations;
 - stacks implemented with circular arrays.
 
-The project is completed by exactly two learners, and both members understand and can explain the complete codebase.
-
 ---
 
 ## Authors and Contributions
@@ -28,10 +26,10 @@ Responsible for:
 
 - implementation of the stack operations;
 - implementation of the sorting algorithms;
+- small-input sorting;
 - Simple strategy;
 - Medium strategy;
 - Complex strategy;
-- small-input sorting;
 - Adaptive strategy integration.
 
 ### André — `ahideo-k`
