@@ -13,7 +13,6 @@ The main program prints the sequence of operations required to sort the numbers.
 - four sorting strategies with different complexity classes;
 - an adaptive strategy based on the initial disorder of the input;
 - a benchmark mode that reports execution metrics;
-- a bonus `checker` program that validates a sequence of operations;
 - stacks implemented with circular arrays.
 
 ---
@@ -64,7 +63,6 @@ Both learners participated in project integration, testing, debugging, code revi
   - Complex: \(O(n\log n)\)
   - Adaptive
 - Optional benchmark mode.
-- Bonus `checker` program.
 - Complete memory cleanup on normal execution and errors.
 
 ---
@@ -466,9 +464,6 @@ To hide the operations and display only the benchmark:
 
 ---
 
-```
----
-
 ## Instructions
 
 ### Requirements
@@ -648,7 +643,6 @@ ARG=($(shuf -i 1-1000 -n 500))
 | `utils.c` | String, output, and integer square-root utilities. |
 | `utils2.c` | Operation names, minimum search, and shortest-path rotation. |
 | `bench.c` | Benchmark formatting and operation totals. |
-| `checker_bonus.c` | Bonus checker program. |
 | `Makefile` | Compilation rules for `push_swap` and `checker`. |
 
 ---
